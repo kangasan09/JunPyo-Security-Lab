@@ -145,32 +145,38 @@ function login(){
     if(pw=="1234"){
 
 
-        if(currentLanguage=="EN"){
+    if(currentLanguage=="EN"){
 
 
-            document.getElementById("msg").innerHTML =
-            "🟢 ACCESS GRANTED";
+        document.getElementById("msg").innerHTML =
+        "🟢 ACCESS GRANTED";
 
 
-            document.getElementById("level").innerHTML =
-            "Access Level : Administrator";
+        document.getElementById("level").innerHTML =
+        "Access Level : Administrator";
 
 
-        }
+    }
 
 
-        else{
+    else{
 
 
-            document.getElementById("msg").innerHTML =
-            "🟢 접근 승인";
+        document.getElementById("msg").innerHTML =
+        "🟢 접근 승인";
 
 
-            document.getElementById("level").innerHTML =
-            "접근 권한 : 관리자";
+        document.getElementById("level").innerHTML =
+        "접근 권한 : 관리자";
 
-location.href="admin.html";
-        }
+
+    }
+
+
+    location.href="admin.html";
+
+
+}
 
 
 

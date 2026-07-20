@@ -1,57 +1,75 @@
 // ==============================
 // Nexus Security Lab v3.0
+// Language System
 // ==============================
+
 
 let percent = 0;
 
+let currentLanguage = "EN";
+
+
 
 // 부팅 화면
+
 function bootAnimation() {
+
 
     let bar = document.getElementById("loadingBar");
     let text = document.getElementById("bootText");
     let per = document.getElementById("percent");
 
-    let timer = setInterval(function () {
+
+    let timer = setInterval(function(){
+
 
         percent++;
+
 
         bar.style.width = percent + "%";
         per.innerHTML = percent + "%";
 
 
-        if (percent == 20)
+
+        if(percent == 20)
             text.innerHTML = "Loading AI...";
 
 
-        if (percent == 40)
+        if(percent == 40)
             text.innerHTML = "Loading Reverse Engineering...";
 
 
-        if (percent == 60)
+        if(percent == 60)
             text.innerHTML = "Loading Malware Database...";
 
 
-        if (percent == 80)
+        if(percent == 80)
             text.innerHTML = "Checking Security...";
 
 
-        if (percent >= 100) {
+
+        if(percent >= 100){
+
 
             clearInterval(timer);
 
 
-            setTimeout(function () {
 
-                document.getElementById("bootScreen").style.display = "none";
-                document.getElementById("mainScreen").style.display = "block";
+            setTimeout(function(){
+
+
+                document.getElementById("bootScreen").style.display="none";
+
+                document.getElementById("mainScreen").style.display="block";
 
 
                 typeWriter();
+
                 updateClock();
 
 
-                setInterval(updateClock, 1000);
+                setInterval(updateClock,1000);
+
 
 
                 terminalPrint(
@@ -60,147 +78,253 @@ function bootAnimation() {
                 );
 
 
-            }, 500);
+
+            },500);
+
 
         }
 
-    }, 40);
+
+    },40);
+
 
 }
 
 
-// 타이핑 애니메이션
+
+
+
+// 타이핑
 
 let text = "Welcome Researcher.";
+
 let i = 0;
 
 
-function typeWriter() {
 
-    if (i < text.length) {
+function typeWriter(){
+
+
+    if(i < text.length){
+
 
         document.getElementById("msg").innerHTML += text.charAt(i);
 
+
         i++;
 
-        setTimeout(typeWriter, 80);
+
+        setTimeout(typeWriter,80);
+
 
     }
 
+
 }
+
+
+
+
 
 
 
 // 로그인
 
-function login() {
+function login(){
+
 
     let pw = document.getElementById("password").value;
 
 
-    if (pw == "1234") {
+
+    if(pw=="1234"){
 
 
-        document.getElementById("msg").innerHTML =
+        if(currentLanguage=="EN"){
+
+
+            document.getElementById("msg").innerHTML =
             "🟢 ACCESS GRANTED";
 
 
-        document.getElementById("level").innerHTML =
+            document.getElementById("level").innerHTML =
             "Access Level : Administrator";
 
 
-        document.body.style.background = "#002b00";
+        }
+
+        else{
+
+
+            document.getElementById("msg").innerHTML =
+            "🟢 접근 승인";
+
+
+            document.getElementById("level").innerHTML =
+            "접근 권한 : 관리자";
+
+
+        }
+
+
+        document.body.style.background="#002b00";
 
 
     }
 
-    else {
+
+    else{
 
 
-        document.getElementById("msg").innerHTML =
+        if(currentLanguage=="EN"){
+
+
+            document.getElementById("msg").innerHTML =
             "🔴 ACCESS DENIED";
 
 
-        document.getElementById("level").innerHTML =
+            document.getElementById("level").innerHTML =
             "Access Level : Guest";
 
 
+        }
+
+        else{
+
+
+            document.getElementById("msg").innerHTML =
+            "🔴 접근 거부";
+
+
+            document.getElementById("level").innerHTML =
+            "접근 권한 : 게스트";
+
+
+        }
+
+
     }
+
 
 }
 
 
 
-// 날짜 / 시간
 
-function updateClock() {
+
+
+
+// 시간
+
+function updateClock(){
+
 
     let now = new Date();
 
 
     document.getElementById("date").innerHTML =
-        "📅 " + now.toLocaleDateString("ko-KR");
+    "📅 " + now.toLocaleDateString("ko-KR");
 
 
     document.getElementById("clock").innerHTML =
-        "⏰ " + now.toLocaleTimeString("ko-KR");
+    "⏰ " + now.toLocaleTimeString("ko-KR");
+
 
 }
+
+
+
+
+
 
 
 
 // 터미널 출력
 
-function terminalPrint(message) {
+function terminalPrint(message){
 
-    let output = document.getElementById("output");
+
+    let output=document.getElementById("output");
 
 
     output.innerHTML += message + "\n\n";
 
 
-    output.scrollTop = output.scrollHeight;
+    output.scrollTop=output.scrollHeight;
+
 
 }
 
 
 
+
+
+
+
+
 // 터미널 명령어
 
-function terminalCommand(event) {
+function terminalCommand(event){
 
 
-    if (event.key !== "Enter")
+
+    if(event.key !== "Enter")
         return;
 
 
-    let input = document.getElementById("terminalInput");
+
+    let input=document.getElementById("terminalInput");
 
 
-    let cmd = input.value.trim().toLowerCase();
+    let cmd=input.value.trim().toLowerCase();
+
 
 
     terminalPrint("C:\\Nexus> " + cmd);
 
 
 
-    switch (cmd) {
+
+    switch(cmd){
+
 
 
         case "help":
 
 
-            terminalPrint(
-                "Commands\n\n" +
-                "help\n" +
-                "about\n" +
-                "reverse\n" +
-                "malware\n" +
-                "clear"
-            );
+            if(currentLanguage=="EN"){
 
 
-            break;
+                terminalPrint(
+                    "Commands\n\n" +
+                    "help\n" +
+                    "about\n" +
+                    "reverse\n" +
+                    "malware\n" +
+                    "clear"
+                );
+
+
+            }
+
+            else{
+
+
+                terminalPrint(
+                    "명령어 목록\n\n" +
+                    "help - 도움말\n" +
+                    "about - 소개\n" +
+                    "reverse - 리버싱\n" +
+                    "malware - 악성코드 분석\n" +
+                    "clear - 삭제"
+                );
+
+
+            }
+
+
+        break;
+
 
 
 
@@ -209,12 +333,15 @@ function terminalCommand(event) {
 
             terminalPrint(
                 "Nexus Security Lab\n" +
-                "Learning Reverse Engineering,\n" +
-                "Malware Analysis and AI Security."
+                "Reverse Engineering\n" +
+                "Malware Analysis\n" +
+                "AI Security"
             );
 
 
-            break;
+        break;
+
+
 
 
 
@@ -229,7 +356,8 @@ function terminalCommand(event) {
             );
 
 
-            break;
+        break;
+
 
 
 
@@ -244,17 +372,18 @@ function terminalCommand(event) {
             );
 
 
-            break;
+        break;
+
 
 
 
         case "clear":
 
 
-            document.getElementById("output").innerHTML = "";
+            document.getElementById("output").innerHTML="";
 
 
-            break;
+        break;
 
 
 
@@ -265,49 +394,121 @@ function terminalCommand(event) {
                 "Unknown command.\nType 'help'."
             );
 
+
     }
 
 
-    input.value = "";
+
+    input.value="";
+
 
 }
 
 
 
-// 한국어 변경
+
+
+
+
+
+// 언어 변경
 
 function changeLanguage(){
 
 
-    document.getElementById("siteTitle").innerHTML =
-    "🦊 Nexus 보안 연구소";
+
+    if(currentLanguage=="EN"){
 
 
-    document.getElementById("reverse").innerHTML =
-    "리버스 엔지니어링";
+
+        document.getElementById("siteTitle").innerHTML =
+        "🦊 Nexus 보안 연구소";
 
 
-    document.getElementById("malware").innerHTML =
-    "악성코드 분석";
+
+        document.getElementById("reverse").innerHTML =
+        "리버스 엔지니어링";
 
 
-    document.getElementById("ai").innerHTML =
-    "AI 보안";
+
+        document.getElementById("malware").innerHTML =
+        "악성코드 분석";
 
 
-    document.getElementById("msg").innerHTML =
-    "연구원님 환영합니다.";
+
+        document.getElementById("ai").innerHTML =
+        "AI 보안";
 
 
-    alert("한국어 모드 활성화");
+
+        document.getElementById("msg").innerHTML =
+        "연구원님 환영합니다.";
+
+
+
+        document.getElementById("langBtn").innerHTML =
+        "English";
+
+
+
+        currentLanguage="KR";
+
+    }
+
+
+
+    else{
+
+
+
+        document.getElementById("siteTitle").innerHTML =
+        "🦊 Nexus Security Lab";
+
+
+
+        document.getElementById("reverse").innerHTML =
+        "Reverse Engineering";
+
+
+
+        document.getElementById("malware").innerHTML =
+        "Malware Analysis";
+
+
+
+        document.getElementById("ai").innerHTML =
+        "AI Security";
+
+
+
+        document.getElementById("msg").innerHTML =
+        "Welcome Researcher.";
+
+
+
+        document.getElementById("langBtn").innerHTML =
+        "한국어";
+
+
+
+        currentLanguage="EN";
+
+
+    }
+
 
 }
+
+
+
+
+
 
 
 
 // 시작
 
-window.onload = function () {
+window.onload=function(){
 
     bootAnimation();
 

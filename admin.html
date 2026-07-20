@@ -190,17 +190,45 @@
 <script>
 
 
-function logout(){
+let language = localStorage.getItem("language");
 
 
-    location.href="index.html";
+if(language=="KR"){
+
+
+    document.querySelector("h1").innerHTML =
+    "🦊 Nexus 보안 연구소";
+
+
+    document.querySelector("h2").innerHTML =
+    "관리자 콘솔";
+
+
+    document.getElementById("access").innerHTML =
+    "🟢 접근 승인";
+
+
+    let button = document.querySelector("button");
+
+    if(button){
+
+        button.innerHTML="로그아웃";
+
+    }
 
 
 }
 
 
-</script>
 
+function logout(){
+
+    location.href="index.html";
+
+}
+
+
+</script>
 
 
 </body>

@@ -169,7 +169,7 @@ function login(){
             document.getElementById("level").innerHTML =
             "접근 권한 : 관리자";
 
-
+location.href="admin.html";
         }
 
 

@@ -479,7 +479,6 @@ function changeLanguage(){
     if(currentLanguage=="EN"){
 
 
-
         document.getElementById("siteTitle").innerHTML =
         "🦊 Nexus 보안 연구소";
 
@@ -526,10 +525,69 @@ function changeLanguage(){
 
         currentLanguage="KR";
 
-localStorage.setItem("language","KR");
+
+        localStorage.setItem("language","KR");
 
 
     }
+
+
+    else{
+
+
+        document.getElementById("siteTitle").innerHTML =
+        "🦊 Nexus Security Lab";
+
+
+        document.getElementById("reverse").innerHTML =
+        "Reverse Engineering";
+
+
+        document.getElementById("malware").innerHTML =
+        "Malware Analysis";
+
+
+        document.getElementById("ai").innerHTML =
+        "AI Security";
+
+
+        document.getElementById("msg").innerHTML =
+        "Welcome Researcher.";
+
+
+        document.getElementById("level").innerHTML =
+        "Access Level : Guest";
+
+
+        document.getElementById("password").placeholder =
+        "Enter Password";
+
+
+        document.getElementById("loginBtn").innerHTML =
+        "LOGIN";
+
+
+        document.getElementById("terminalTitle").innerHTML =
+        "Terminal";
+
+
+        document.getElementById("terminalInput").placeholder =
+        "Type command...";
+
+
+        document.getElementById("langBtn").innerHTML =
+        "한국어";
+
+
+        currentLanguage="EN";
+
+
+        localStorage.setItem("language","EN");
+
+
+    }
+
+}
 
 
 

@@ -2,22 +2,33 @@
 <html lang="ko">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Nexus Security Lab</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
+
     <!-- 부팅 화면 -->
+
     <div id="bootScreen">
 
-       <h1>🦊 Nexus Security Lab</h1>
 
-        <p id="bootText">BOOTING...</p>
+        <h1>🦊 Nexus Security Lab</h1>
+
+
+        <p id="bootText">
+            BOOTING...
+        </p>
+
+
 
         <div id="loadingBox">
 
@@ -25,76 +36,175 @@
 
         </div>
 
-        <p id="percent">0%</p>
+
+
+        <p id="percent">
+            0%
+        </p>
+
 
     </div>
 
+
+
+
+
     <!-- 메인 화면 -->
+
+
     <div id="mainScreen" style="display:none;">
 
-        <h1 id="siteTitle">🦊 Nexus Security Lab</h1>
 
-<button onclick="changeLanguage()">
-    한국어
-</button>
 
-<h2 id="reverse">
-    Reverse Engineering
-</h2>
+        <h1 id="siteTitle">
+            🦊 Nexus Security Lab
+        </h1>
 
-<h2 id="malware">
-    Malware Analysis
-</h2>
 
-<h2 id="ai">
-    AI Security
-</h2>
+
+        <button onclick="changeLanguage()">
+
+            한국어
+
+        </button>
+
+
+
+
+
+        <h2 id="reverse">
+
+            Reverse Engineering
+
+        </h2>
+
+
+
+
+        <h2 id="malware">
+
+            Malware Analysis
+
+        </h2>
+
+
+
+
+        <h2 id="ai">
+
+            AI Security
+
+        </h2>
+
+
+
+
         <hr>
 
-        <p id="msg">Welcome Researcher.</p>
+
+
+
+        <p id="msg">
+
+            Welcome Researcher.
+
+        </p>
+
+
+
 
         <p id="level">
+
             Access Level : Guest
+
         </p>
+
+
+
+
 
         <input
             type="password"
             id="password"
             placeholder="Enter Password">
 
+
+
         <br><br>
 
+
+
+
         <button onclick="login()">
+
             LOGIN
+
         </button>
 
+
+
+
         <hr>
+
+
+
+
 
         <p id="date"></p>
 
+
         <p id="clock"></p>
+
+
+
+
 
         <hr>
 
-        <h2>Terminal</h2>
+
+
+
+
+        <h2>
+
+            Terminal
+
+        </h2>
+
+
+
 
         <div id="terminal">
 
+
+
             <div id="output"></div>
+
+
+
 
             <input
                 id="terminalInput"
                 placeholder="Type command..."
                 onkeydown="terminalCommand(event)">
 
+
+
         </div>
+
+
+
 
     </div>
 
+
+
+
     <script src="script.js"></script>
+
+
 
 </body>
 
-    <script src="script.js"></script>
 
 </html>

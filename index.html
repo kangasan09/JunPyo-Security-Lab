@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JunPyo Security Lab</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- 부팅 화면 -->
+    <div id="bootScreen">
+
+        <h1>🦊 JunPyo Security Lab</h1>
+
+        <p id="bootText">BOOTING...</p>
+
+        <div id="loadingBox">
+
+            <div id="loadingBar"></div>
+
+        </div>
+
+        <p id="percent">0%</p>
+
+    </div>
+
+    <!-- 메인 화면 -->
+    <div id="mainScreen" style="display:none;">
+
+        <h1>🦊 JunPyo Security Lab</h1>
+
+        <h2>Reverse Engineering</h2>
+        <h2>Malware Analysis</h2>
+        <h2>AI Security</h2>
+
+        <hr>
+
+        <p id="msg">Welcome Researcher.</p>
+
+        <p id="level">
+            Access Level : Guest
+        </p>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter Password">
+
+        <br><br>
+
+        <button onclick="login()">
+            LOGIN
+        </button>
+
+        <hr>
+
+        <p id="date"></p>
+
+        <p id="clock"></p>
+
+        <hr>
+
+        <h2>Terminal</h2>
+
+        <div id="terminal">
+
+            <div id="output"></div>
+
+            <input
+                id="terminalInput"
+                placeholder="Type command..."
+                onkeydown="terminalCommand(event)">
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

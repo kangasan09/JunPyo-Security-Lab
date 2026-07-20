@@ -526,6 +526,8 @@ function changeLanguage(){
 
         currentLanguage="KR";
 
+localStorage.setItem("language","KR");
+
 
     }
 

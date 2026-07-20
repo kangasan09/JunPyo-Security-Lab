@@ -233,3 +233,23 @@ function changeLanguage(){
     "연구원님 환영합니다.";
 
 }
+function changeLanguage(){
+
+    document.getElementById("reverse").innerHTML =
+    "리버스 엔지니어링";
+
+
+    document.getElementById("malware").innerHTML =
+    "악성코드 분석";
+
+
+    document.getElementById("ai").innerHTML =
+    "AI 보안";
+
+
+    document.getElementById("msg").innerHTML =
+    "연구원님 환영합니다.";
+
+
+    alert("한국어 모드 활성화");
+}

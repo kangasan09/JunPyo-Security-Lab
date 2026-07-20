@@ -10,9 +10,13 @@ let currentLanguage = "EN";
 
 
 
-// 부팅 화면
 
-function bootAnimation() {
+// ==============================
+// Boot Animation
+// ==============================
+
+
+function bootAnimation(){
 
 
     let bar = document.getElementById("loadingBar");
@@ -20,13 +24,16 @@ function bootAnimation() {
     let per = document.getElementById("percent");
 
 
+
     let timer = setInterval(function(){
+
 
 
         percent++;
 
 
         bar.style.width = percent + "%";
+
         per.innerHTML = percent + "%";
 
 
@@ -48,7 +55,9 @@ function bootAnimation() {
 
 
 
+
         if(percent >= 100){
+
 
 
             clearInterval(timer);
@@ -58,12 +67,15 @@ function bootAnimation() {
             setTimeout(function(){
 
 
+
                 document.getElementById("bootScreen").style.display="none";
 
                 document.getElementById("mainScreen").style.display="block";
 
 
+
                 typeWriter();
+
 
                 updateClock();
 
@@ -85,7 +97,9 @@ function bootAnimation() {
         }
 
 
+
     },40);
+
 
 
 }
@@ -94,7 +108,11 @@ function bootAnimation() {
 
 
 
-// 타이핑
+
+// ==============================
+// Typing Effect
+// ==============================
+
 
 let text = "Welcome Researcher.";
 
@@ -105,10 +123,13 @@ let i = 0;
 function typeWriter(){
 
 
+
     if(i < text.length){
 
 
+
         document.getElementById("msg").innerHTML += text.charAt(i);
+
 
 
         i++;
@@ -117,7 +138,9 @@ function typeWriter(){
         setTimeout(typeWriter,80);
 
 
+
     }
+
 
 
 }
@@ -128,16 +151,22 @@ function typeWriter(){
 
 
 
-// 로그인
+// ==============================
+// Login
+// ==============================
+
 
 function login(){
+
 
 
     let pw = document.getElementById("password").value;
 
 
 
-    if(pw=="1234"){
+
+    if(pw == "1234"){
+
 
 
         if(currentLanguage=="EN"){
@@ -149,6 +178,7 @@ function login(){
 
             document.getElementById("level").innerHTML =
             "Access Level : Administrator";
+
 
 
         }
@@ -164,16 +194,22 @@ function login(){
             "접근 권한 : 관리자";
 
 
+
         }
+
+
 
 
         document.body.style.background="#002b00";
 
 
+
     }
 
 
+
     else{
+
 
 
         if(currentLanguage=="EN"){
@@ -187,7 +223,9 @@ function login(){
             "Access Level : Guest";
 
 
+
         }
+
 
         else{
 
@@ -200,10 +238,14 @@ function login(){
             "접근 권한 : 게스트";
 
 
+
         }
 
 
+
     }
+
+
 
 
 }
@@ -214,20 +256,28 @@ function login(){
 
 
 
-// 시간
+
+// ==============================
+// Clock
+// ==============================
+
 
 function updateClock(){
 
 
+
     let now = new Date();
+
 
 
     document.getElementById("date").innerHTML =
     "📅 " + now.toLocaleDateString("ko-KR");
 
 
+
     document.getElementById("clock").innerHTML =
     "⏰ " + now.toLocaleTimeString("ko-KR");
+
 
 
 }
@@ -238,19 +288,24 @@ function updateClock(){
 
 
 
+// ==============================
+// Terminal Print
+// ==============================
 
-// 터미널 출력
 
 function terminalPrint(message){
 
 
-    let output=document.getElementById("output");
+
+    let output = document.getElementById("output");
+
 
 
     output.innerHTML += message + "\n\n";
 
 
-    output.scrollTop=output.scrollHeight;
+    output.scrollTop = output.scrollHeight;
+
 
 
 }
@@ -261,8 +316,10 @@ function terminalPrint(message){
 
 
 
+// ==============================
+// Terminal Command
+// ==============================
 
-// 터미널 명령어
 
 function terminalCommand(event){
 
@@ -273,10 +330,11 @@ function terminalCommand(event){
 
 
 
-    let input=document.getElementById("terminalInput");
+    let input = document.getElementById("terminalInput");
 
 
-    let cmd=input.value.trim().toLowerCase();
+
+    let cmd = input.value.trim().toLowerCase();
 
 
 
@@ -295,6 +353,7 @@ function terminalCommand(event){
             if(currentLanguage=="EN"){
 
 
+
                 terminalPrint(
                     "Commands\n\n" +
                     "help\n" +
@@ -305,9 +364,11 @@ function terminalCommand(event){
                 );
 
 
+
             }
 
             else{
+
 
 
                 terminalPrint(
@@ -320,7 +381,9 @@ function terminalCommand(event){
                 );
 
 
+
             }
+
 
 
         break;
@@ -328,7 +391,10 @@ function terminalCommand(event){
 
 
 
+
+
         case "about":
+
 
 
             terminalPrint(
@@ -339,13 +405,16 @@ function terminalCommand(event){
             );
 
 
+
         break;
 
 
 
 
 
+
         case "reverse":
+
 
 
             terminalPrint(
@@ -356,12 +425,16 @@ function terminalCommand(event){
             );
 
 
+
         break;
 
 
 
 
+
+
         case "malware":
+
 
 
             terminalPrint(
@@ -372,7 +445,10 @@ function terminalCommand(event){
             );
 
 
+
         break;
+
+
 
 
 
@@ -380,14 +456,20 @@ function terminalCommand(event){
         case "clear":
 
 
+
             document.getElementById("output").innerHTML="";
+
 
 
         break;
 
 
 
+
+
+
         default:
+
 
 
             terminalPrint(
@@ -395,11 +477,13 @@ function terminalCommand(event){
             );
 
 
+
     }
 
 
 
     input.value="";
+
 
 
 }
@@ -411,7 +495,11 @@ function terminalCommand(event){
 
 
 
-// 언어 변경
+
+// ==============================
+// Language Change
+// ==============================
+
 
 function changeLanguage(){
 
@@ -446,6 +534,26 @@ function changeLanguage(){
 
 
 
+        document.getElementById("level").innerHTML =
+        "접근 권한 : 게스트";
+
+
+
+        document.getElementById("loginBtn").innerHTML =
+        "로그인";
+
+
+
+        document.getElementById("terminalTitle").innerHTML =
+        "터미널";
+
+
+
+        document.getElementById("terminalInput").placeholder =
+        "명령어 입력...";
+
+
+
         document.getElementById("langBtn").innerHTML =
         "English";
 
@@ -453,7 +561,10 @@ function changeLanguage(){
 
         currentLanguage="KR";
 
+
+
     }
+
 
 
 
@@ -486,6 +597,26 @@ function changeLanguage(){
 
 
 
+        document.getElementById("level").innerHTML =
+        "Access Level : Guest";
+
+
+
+        document.getElementById("loginBtn").innerHTML =
+        "LOGIN";
+
+
+
+        document.getElementById("terminalTitle").innerHTML =
+        "Terminal";
+
+
+
+        document.getElementById("terminalInput").placeholder =
+        "Type command...";
+
+
+
         document.getElementById("langBtn").innerHTML =
         "한국어";
 
@@ -494,7 +625,9 @@ function changeLanguage(){
         currentLanguage="EN";
 
 
+
     }
+
 
 
 }
@@ -505,11 +638,15 @@ function changeLanguage(){
 
 
 
+// ==============================
+// Start
+// ==============================
 
-// 시작
 
 window.onload=function(){
 
+
     bootAnimation();
+
 
 };

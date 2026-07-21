@@ -21,20 +21,23 @@ body{
 }
 
 
+
 #adminBoot{
 
     position:absolute;
 
     top:50%;
+
     left:50%;
 
     transform:translate(-50%,-50%);
 
-    z-index:999;
-
     text-align:center;
 
+    z-index:999;
+
 }
+
 
 
 #adminLoadingBox{
@@ -45,9 +48,8 @@ body{
 
     border:2px solid #00ff00;
 
-    margin:auto;
-
 }
+
 
 
 #adminBar{
@@ -59,6 +61,7 @@ body{
     background:#00ff00;
 
 }
+
 
 
 #adminScreen{
@@ -82,6 +85,7 @@ body{
 }
 
 
+
 #adminTerminal{
 
     width:600px;
@@ -95,6 +99,7 @@ body{
 }
 
 
+
 </style>
 
 </head>
@@ -105,25 +110,19 @@ body{
 
 
 
-<!-- =====================
-     Admin Boot Screen
-===================== -->
+<!-- 관리자 로딩 화면 -->
 
 
 <div id="adminBoot">
 
 
 <h1>
-
 🦊 Nexus Security Lab
-
 </h1>
 
 
 <p id="adminText">
-
 ACCESSING ADMIN SYSTEM...
-
 </p>
 
 
@@ -137,9 +136,7 @@ ACCESSING ADMIN SYSTEM...
 
 
 <p id="adminPercent">
-
 0%
-
 </p>
 
 
@@ -150,9 +147,8 @@ ACCESSING ADMIN SYSTEM...
 
 
 
-<!-- =====================
-     Admin Main Screen
-===================== -->
+
+<!-- 관리자 메인 화면 -->
 
 
 <div id="adminScreen">
@@ -195,7 +191,6 @@ Security Level : Administrator
 
 
 <hr>
-
 
 
 
@@ -290,6 +285,7 @@ Wireshark
 
 
 
+
 <h2 id="terminalTitle">
 
 💻 Research Terminal
@@ -349,83 +345,75 @@ LOGOUT
 
 
 
+
 <script>
 
 
 // =====================
-// Admin Loading
+// 관리자 로딩
 // =====================
 
 
 let adminPercent = 0;
 
 
-
 let adminTimer = setInterval(function(){
 
 
-adminPercent++;
+    adminPercent++;
+
+
+    document.getElementById("adminBar").style.width =
+    adminPercent + "%";
+
+
+    document.getElementById("adminPercent").innerHTML =
+    adminPercent + "%";
 
 
 
-document.getElementById("adminBar").style.width =
-adminPercent + "%";
+    if(adminPercent == 30){
+
+        document.getElementById("adminText").innerHTML =
+        "Checking Permission...";
+
+    }
 
 
 
-document.getElementById("adminPercent").innerHTML =
-adminPercent + "%";
+    if(adminPercent == 60){
+
+        document.getElementById("adminText").innerHTML =
+        "Loading Security Tools...";
+
+    }
 
 
 
+    if(adminPercent == 90){
 
-if(adminPercent == 30){
+        document.getElementById("adminText").innerHTML =
+        "Opening Admin Console...";
 
-document.getElementById("adminText").innerHTML =
-"Checking Permission...";
-
-}
-
-
-
-if(adminPercent == 60){
-
-document.getElementById("adminText").innerHTML =
-"Loading Security Tools...";
-
-}
+    }
 
 
 
-if(adminPercent == 90){
-
-document.getElementById("adminText").innerHTML =
-"Opening Admin Console...";
-
-}
+    if(adminPercent >= 100){
 
 
+        clearInterval(adminTimer);
 
 
-
-if(adminPercent >= 100){
-
-
-clearInterval(adminTimer);
+        document.getElementById("adminBoot").style.display =
+        "none";
 
 
-
-document.getElementById("adminBoot").style.display =
-"none";
-
+        document.getElementById("adminScreen").style.display =
+        "block";
 
 
-document.getElementById("adminScreen").style.display =
-"block";
-
-
-
-}
+    }
 
 
 
@@ -437,12 +425,9 @@ document.getElementById("adminScreen").style.display =
 
 
 
-
-
 // =====================
-// Language System
+// 한국어 시스템
 // =====================
-
 
 
 let language = localStorage.getItem("language");
@@ -452,44 +437,36 @@ let language = localStorage.getItem("language");
 if(language=="KR"){
 
 
-
-document.getElementById("adminSiteTitle").innerHTML =
-"🦊 Nexus 보안 연구소";
-
+    document.getElementById("adminSiteTitle").innerHTML =
+    "🦊 Nexus 보안 연구소";
 
 
-document.getElementById("adminTitle").innerHTML =
-"관리자 콘솔";
+    document.getElementById("adminTitle").innerHTML =
+    "관리자 콘솔";
 
 
-
-document.getElementById("access").innerHTML =
-"🟢 접근 승인";
-
+    document.getElementById("access").innerHTML =
+    "🟢 접근 승인";
 
 
-document.getElementById("securityLevel").innerHTML =
-"보안 등급 : 관리자";
+    document.getElementById("securityLevel").innerHTML =
+    "보안 등급 : 관리자";
 
 
-
-document.getElementById("archiveTitle").innerHTML =
-"📁 학습 자료";
-
+    document.getElementById("archiveTitle").innerHTML =
+    "📁 학습 자료";
 
 
-document.getElementById("toolTitle").innerHTML =
-"🛠 보안 도구";
+    document.getElementById("toolTitle").innerHTML =
+    "🛠 보안 도구";
 
 
-
-document.getElementById("terminalTitle").innerHTML =
-"💻 연구 터미널";
-
+    document.getElementById("terminalTitle").innerHTML =
+    "💻 연구 터미널";
 
 
-document.getElementById("logoutBtn").innerHTML =
-"로그아웃";
+    document.getElementById("logoutBtn").innerHTML =
+    "로그아웃";
 
 
 }
@@ -499,15 +476,16 @@ document.getElementById("logoutBtn").innerHTML =
 
 
 
-
 // =====================
-// Logout
+// 로그아웃
 // =====================
 
 
 function logout(){
 
-location.href="index.html";
+
+    location.href="index.html";
+
 
 }
 

@@ -14,6 +14,13 @@
 
 <style>
 
+body{
+
+    background:#002b00;
+
+}
+
+
 #adminBoot{
 
     position:absolute;
@@ -22,6 +29,10 @@
     left:50%;
 
     transform:translate(-50%,-50%);
+
+    z-index:999;
+
+    text-align:center;
 
 }
 
@@ -33,6 +44,8 @@
     height:30px;
 
     border:2px solid #00ff00;
+
+    margin:auto;
 
 }
 
@@ -46,7 +59,6 @@
     background:#00ff00;
 
 }
-
 
 
 #adminScreen{
@@ -83,49 +95,28 @@
 }
 
 
-
 </style>
 
 </head>
 
 
+
 <body>
-    <div id="adminBoot">
-
-<h1>
-🦊 Nexus Security Lab
-</h1>
-
-<p id="adminText">
-ACCESSING ADMIN SYSTEM...
-</p>
 
 
-<div id="adminLoadingBox">
 
-<div id="adminBar"></div>
+<!-- =====================
+     Admin Boot Screen
+===================== -->
 
-</div>
-
-
-<p id="adminPercent">
-0%
-</p>
-
-</div>
-<script>
-
-document.body.style.background="#002b00";
-
-</script>
-
-<!-- 관리자 부팅 화면 -->
 
 <div id="adminBoot">
 
 
 <h1>
+
 🦊 Nexus Security Lab
+
 </h1>
 
 
@@ -159,10 +150,12 @@ ACCESSING ADMIN SYSTEM...
 
 
 
-<!-- 관리자 화면 -->
+<!-- =====================
+     Admin Main Screen
+===================== -->
 
 
-<div id="adminScreen" style="display:none;">
+<div id="adminScreen">
 
 
 <h1 id="adminSiteTitle">
@@ -202,6 +195,7 @@ Security Level : Administrator
 
 
 <hr>
+
 
 
 
@@ -262,7 +256,6 @@ Security Level : Administrator
 🛠 Security Toolkit
 
 </h2>
-
 
 
 
@@ -335,7 +328,6 @@ Security : ACTIVE
 
 
 
-
 <br>
 
 
@@ -356,33 +348,38 @@ LOGOUT
 
 
 
+
 <script>
 
 
-// ======================
+// =====================
 // Admin Loading
-// ======================
+// =====================
 
 
-let adminPercent=0;
+let adminPercent = 0;
 
 
-let adminTimer=setInterval(function(){
+
+let adminTimer = setInterval(function(){
 
 
 adminPercent++;
 
 
+
 document.getElementById("adminBar").style.width =
-adminPercent+"%";
+adminPercent + "%";
+
 
 
 document.getElementById("adminPercent").innerHTML =
-adminPercent+"%";
+adminPercent + "%";
 
 
 
-if(adminPercent==30){
+
+if(adminPercent == 30){
 
 document.getElementById("adminText").innerHTML =
 "Checking Permission...";
@@ -391,7 +388,7 @@ document.getElementById("adminText").innerHTML =
 
 
 
-if(adminPercent==60){
+if(adminPercent == 60){
 
 document.getElementById("adminText").innerHTML =
 "Loading Security Tools...";
@@ -400,7 +397,7 @@ document.getElementById("adminText").innerHTML =
 
 
 
-if(adminPercent==90){
+if(adminPercent == 90){
 
 document.getElementById("adminText").innerHTML =
 "Opening Admin Console...";
@@ -409,16 +406,23 @@ document.getElementById("adminText").innerHTML =
 
 
 
-if(adminPercent>=100){
+
+
+if(adminPercent >= 100){
 
 
 clearInterval(adminTimer);
 
 
-document.getElementById("adminBoot").style.display="none";
+
+document.getElementById("adminBoot").style.display =
+"none";
 
 
-document.getElementById("adminScreen").style.display="block";
+
+document.getElementById("adminScreen").style.display =
+"block";
+
 
 
 }
@@ -433,13 +437,15 @@ document.getElementById("adminScreen").style.display="block";
 
 
 
-// ======================
+
+
+// =====================
 // Language System
-// ======================
+// =====================
 
 
-let language =
-localStorage.getItem("language");
+
+let language = localStorage.getItem("language");
 
 
 
@@ -493,9 +499,10 @@ document.getElementById("logoutBtn").innerHTML =
 
 
 
-// ======================
+
+// =====================
 // Logout
-// ======================
+// =====================
 
 
 function logout(){
@@ -505,11 +512,9 @@ location.href="index.html";
 }
 
 
-<script>
-
-여기 안에 JavaScript 코드
 
 </script>
+
 
 
 </body>

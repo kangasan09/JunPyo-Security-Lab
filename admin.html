@@ -3,13 +3,88 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Nexus Security Lab - Admin</title>
+<title>Nexus Security Lab - Admin</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+
+
+<style>
+
+#adminBoot{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+}
+
+
+#adminLoadingBox{
+
+    width:600px;
+
+    height:30px;
+
+    border:2px solid #00ff00;
+
+}
+
+
+#adminBar{
+
+    width:0%;
+
+    height:100%;
+
+    background:#00ff00;
+
+}
+
+
+
+#adminScreen{
+
+    display:none;
+
+}
+
+
+
+.box{
+
+    width:600px;
+
+    margin:20px auto;
+
+    border:2px solid #00ff00;
+
+    padding:20px;
+
+}
+
+
+#adminTerminal{
+
+    width:600px;
+
+    margin:auto;
+
+    border:2px solid #00ff00;
+
+    padding:20px;
+
+}
+
+
+
+</style>
 
 </head>
 
@@ -17,167 +92,231 @@
 <body>
 
 
+<!-- 관리자 부팅 화면 -->
+
+<div id="adminBoot">
+
+
+<h1>
+🦊 Nexus Security Lab
+</h1>
+
+
+<p id="adminText">
+
+ACCESSING ADMIN SYSTEM...
+
+</p>
+
+
+
+<div id="adminLoadingBox">
+
+<div id="adminBar"></div>
+
+</div>
+
+
+
+<p id="adminPercent">
+
+0%
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+<!-- 관리자 화면 -->
+
+
 <div id="adminScreen">
 
 
-    <h1>
-        🦊 Nexus Security Lab
-    </h1>
+<h1 id="adminSiteTitle">
 
+🦊 Nexus Security Lab
 
-    <h2>
-        ADMINISTRATOR CONSOLE
-    </h2>
+</h1>
 
 
-    <hr>
 
+<h2 id="adminTitle">
 
+ADMINISTRATOR CONSOLE
 
-    <p id="access">
+</h2>
 
-        🟢 ACCESS GRANTED
 
-    </p>
 
+<hr>
 
-    <p>
 
-        Security Level : Administrator
 
-    </p>
+<p id="access">
 
+🟢 ACCESS GRANTED
 
+</p>
 
-    <hr>
 
 
+<p id="securityLevel">
 
+Security Level : Administrator
 
-    <h2>
-        📁 Learning Archive
-    </h2>
+</p>
 
 
-    <div class="box">
 
+<hr>
 
-        <p>
-            ✅ HTML / CSS Website
-        </p>
 
 
-        <p>
-            ✅ JavaScript
-        </p>
 
 
-        <p>
-            ✅ GitHub Pages
-        </p>
+<h2 id="archiveTitle">
 
+📁 Learning Archive
 
-        <p>
-            🔒 Reverse Engineering
-        </p>
+</h2>
 
 
-        <p>
-            🔒 Malware Analysis
-        </p>
 
+<div class="box">
 
-        <p>
-            🔒 AI Security
-        </p>
 
+<p>
+✅ HTML / CSS Website
+</p>
 
-    </div>
 
+<p>
+✅ JavaScript
+</p>
 
 
+<p>
+✅ GitHub Pages
+</p>
 
 
-    <h2>
-        🛠 Security Toolkit
-    </h2>
+<p>
+🔒 Reverse Engineering
+</p>
 
 
+<p>
+🔒 Malware Analysis
+</p>
 
-    <div class="box">
 
+<p>
+🔒 AI Security
+</p>
 
-        <p>
-            x64dbg
-        </p>
 
+</div>
 
-        <p>
-            Ghidra
-        </p>
 
 
-        <p>
-            IDA Free
-        </p>
 
 
-        <p>
-            Wireshark
-        </p>
 
 
-    </div>
 
+<h2 id="toolTitle">
 
+🛠 Security Toolkit
 
+</h2>
 
 
 
-    <h2>
-        💻 Research Terminal
-    </h2>
 
+<div class="box">
 
 
-    <div id="adminTerminal">
+<p>
+x64dbg
+</p>
 
 
-        <p>
-            Nexus Admin Terminal
-        </p>
+<p>
+Ghidra
+</p>
 
 
-        <p>
-            System Status : ONLINE
-        </p>
+<p>
+IDA Free
+</p>
 
 
-        <p>
-            Database : CONNECTED
-        </p>
+<p>
+Wireshark
+</p>
 
 
-        <p>
-            Security : ACTIVE
-        </p>
+</div>
 
 
-    </div>
 
 
 
 
 
+<h2 id="terminalTitle">
 
-    <br>
+💻 Research Terminal
 
+</h2>
 
-    <button onclick="logout()">
 
-        LOGOUT
 
-    </button>
+<div id="adminTerminal">
+
+
+<p>
+Nexus Admin Terminal
+</p>
+
+
+<p>
+System Status : ONLINE
+</p>
+
+
+<p>
+Database : CONNECTED
+</p>
+
+
+<p>
+Security : ACTIVE
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<br>
+
+
+<button onclick="logout()" id="logoutBtn">
+
+LOGOUT
+
+</button>
 
 
 
@@ -187,43 +326,154 @@
 
 
 
+
+
+
 <script>
 
 
-let language = localStorage.getItem("language");
+// ======================
+// Admin Loading
+// ======================
 
 
-if(language=="KR"){
+let adminPercent=0;
 
 
-    document.querySelector("h1").innerHTML =
-    "🦊 Nexus 보안 연구소";
+let adminTimer=setInterval(function(){
 
 
-    document.querySelector("h2").innerHTML =
-    "관리자 콘솔";
+adminPercent++;
 
 
-    document.getElementById("access").innerHTML =
-    "🟢 접근 승인";
+document.getElementById("adminBar").style.width =
+adminPercent+"%";
 
 
-    let button = document.querySelector("button");
+document.getElementById("adminPercent").innerHTML =
+adminPercent+"%";
 
-    if(button){
 
-        button.innerHTML="로그아웃";
 
-    }
+if(adminPercent==30){
+
+document.getElementById("adminText").innerHTML =
+"Checking Permission...";
+
+}
+
+
+
+if(adminPercent==60){
+
+document.getElementById("adminText").innerHTML =
+"Loading Security Tools...";
+
+}
+
+
+
+if(adminPercent==90){
+
+document.getElementById("adminText").innerHTML =
+"Opening Admin Console...";
+
+}
+
+
+
+if(adminPercent>=100){
+
+
+clearInterval(adminTimer);
+
+
+document.getElementById("adminBoot").style.display="none";
+
+
+document.getElementById("adminScreen").style.display="block";
 
 
 }
 
 
 
+},40);
+
+
+
+
+
+
+
+// ======================
+// Language System
+// ======================
+
+
+let language =
+localStorage.getItem("language");
+
+
+
+if(language=="KR"){
+
+
+
+document.getElementById("adminSiteTitle").innerHTML =
+"🦊 Nexus 보안 연구소";
+
+
+
+document.getElementById("adminTitle").innerHTML =
+"관리자 콘솔";
+
+
+
+document.getElementById("access").innerHTML =
+"🟢 접근 승인";
+
+
+
+document.getElementById("securityLevel").innerHTML =
+"보안 등급 : 관리자";
+
+
+
+document.getElementById("archiveTitle").innerHTML =
+"📁 학습 자료";
+
+
+
+document.getElementById("toolTitle").innerHTML =
+"🛠 보안 도구";
+
+
+
+document.getElementById("terminalTitle").innerHTML =
+"💻 연구 터미널";
+
+
+
+document.getElementById("logoutBtn").innerHTML =
+"로그아웃";
+
+
+}
+
+
+
+
+
+
+// ======================
+// Logout
+// ======================
+
+
 function logout(){
 
-    location.href="index.html";
+location.href="index.html";
 
 }
 
